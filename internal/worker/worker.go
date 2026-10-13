@@ -70,7 +70,7 @@ func (w *Worker) processTicket(msg *queue.TicketMessage) error {
 		return err
 	}
 
-	log.Printf("Generated response for ticket %d: %s", msg.TicketID, response[:100]+"...")
+	log.Printf("Generated response for ticket %d: %s", msg.TicketID, response[:min(len(response), 100)]+"...")
 
 	// Отправляем комментарий в Freshdesk
 	isPrivate := msg.IsSystem // Системные тикеты получают приватные комментарии
